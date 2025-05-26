@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Subandi - Portfolio</title>
+    <style>
+        /* Import Font (Opsional, tapi disarankan untuk mirip gambar) */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        :root {
+            --primary-bg-color: #1a202c; /* Biru gelap */
+            --text-color-light: #edf2f7; /* Putih keabu-abuan */
+            --text-color-dark: #cbd5e0; /* Abu-abu lebih gelap */
+            --accent-color: #63b3ed; /* Biru terang untuk tombol/hover */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg-color);
+            color: var(--text-color-light);
+            line-height: 1.6;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%; /* Padding atas/bawah, kiri/kanan */
+            background-color: var(--primary-bg-color); /* Pastikan sama dengan body */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis tipis di bawah */
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color-light);
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem; /* Jarak antar item menu */
+        }
+
+        .navbar nav ul li a {
+            color: var(--text-color-dark); /* Warna teks menu default */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar nav ul li a:hover {
+            color: var(--accent-color); /* Warna teks saat hover */
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5rem 5%;
+            min-height: calc(100vh - 80px); /* Sesuaikan tinggi agar responsif */
+            gap: 4rem; /* Jarak antara teks dan gambar */
+            flex-wrap: wrap; /* Agar elemen bisa wrap di layar kecil */
+        }
+
+        .hero-content {
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem; /* Ukuran font judul */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .role {
+            font-size: 1.5rem;
+            color: var(--accent-color); /* Warna biru untuk "Front End Developer" */
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            color: var(--text-color-dark);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-content .btn-contact {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-bg-color); /* Teks tombol warna gelap */
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .hero-content .btn-contact:hover {
+            background-color: #4299e1; /* Sedikit lebih gelap saat hover */
+            transform: translateY(-2px);
+        }
+
+        /* Hero Image Styling (Heksagon) */
+        .hero-image {
+            position: relative;
+            width: 300px; /* Lebar gambar */
+            height: 300px; /* Tinggi gambar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Pastikan gambar mengisi area */
+            display: block;
+            /* Untuk efek heksagon: */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            /* Optional: border-radius untuk sedikit pembulatan jika diinginkan */
+            border-radius: 5px;
+            z-index: 2; /* Pastikan gambar di atas overlay */
+        }
+
+        /* Efek Hexagon Overlay / Glow */
+        .hexagon-overlay {
+            position: absolute;
+            width: 105%; /* Sedikit lebih besar dari gambar */
+            height: 105%; /* Sedikit lebih besar dari gambar */
+            background-color: transparent;
+            /* Untuk efek heksagon: */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            /* Efek glow */
+            box-shadow: 0 0 20px 5px rgba(99, 179, 237, 0.7); /* Warna accent dengan blur */
+            z-index: 1; /* Di bawah gambar */
+            animation: pulse-glow 2s infinite alternate; /* Animasi glow */
+        }
+
+        @keyframes pulse-glow {
+            from {
+                box-shadow: 0 0 15px 3px rgba(99, 179, 237, 0.5);
+            }
+            to {
+                box-shadow: 0 0 30px 8px rgba(99, 179, 237, 0.9);
+            }
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 3%;
+            }
+
+            .navbar nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 3rem 3%;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .role {
+                font-size: 1.2rem;
+            }
+
+            .hero-content .description {
+                font-size: 1rem;
+            }
+
+            .hero-image {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content .role {
+                font-size: 1rem;
+            }
+            .hero-content .description {
+                font-size: 0.9rem;
+            }
+            .navbar .logo {
+                font-size: 1.2rem;
+            }
+            .navbar nav ul li a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">SubandiPorto</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#biodata">Biodata</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#video">Video</a></li>
+                <li><a href="#view-pdf">View PDF</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <h1>Hi, I'm Muhammad <br> Subandi</h1>
+            <p class="role">Front End Developer</p>
+            <p class="description">saya mahasiswa UNIVERSITAS NAHDLATUL WATHAN <br> MATARAM, jurusan MATEMATIKA.Saya seorang designer.</p>
+            <a href="#contact" class="btn-contact">Hubungi Saya</a>
+        </div>
+        <div class="hero-image">
+            <img src="a/i.jpg" alt="Muhammad Subandi">
+            <div class="hexagon-overlay"></div>
+        </div>
+    </main>
+
+</body>
+</html>
